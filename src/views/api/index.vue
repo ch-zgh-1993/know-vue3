@@ -24,7 +24,7 @@ import { reactive } from '@vue/composition-api'
 export default {
 	components: {
 		props: () => import('./modules/base/setup'),
-		reactive: () => import('./modules/reactive')
+		reactive: () => import('./modules/reactive/index.vue')
 	},
 	setup () {
 		// const time = new Date()

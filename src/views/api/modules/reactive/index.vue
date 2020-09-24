@@ -13,6 +13,8 @@
 
 <script>
 import { computed, ref } from '@vue/composition-api'
+import {readonlyF} from './reactiveApi'
+
 export default {
     components: {
         reactive: () => import('./components/reactive')
@@ -44,6 +46,8 @@ export default {
         console.log(count.value)
         countPlus.value = 3
         console.log(count.value)
+        
+        readonlyF()
 
         return {
             a, 
