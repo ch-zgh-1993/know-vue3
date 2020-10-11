@@ -51,6 +51,8 @@
     + v2.x: 不明确，且效率会降低。通过函数绑定在响应式属性上。 可被监听。
 
 
+
+
 ## 组件
 
 - 在 3.x 中，函数式组件 2x 的性能提升可以忽略不计，因此我们建议只使用有状态的组件。
@@ -88,11 +90,35 @@
 - 移除 $scopeSlots
 - 自定义指令 API 已更改为与组件生命周期一致
 - 一些class 被重命名了。
-- 
+- 组件 watch 选项和实例方法 $watch 不再支持点分隔字符串路径，请改用计算函数作为参数
+- 在 Vue 2.x 中，应用根容器的 outerHTML 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。VUE3.x 现在使用应用程序容器的 innerHTML。
 
 
+## 其他一些小的改变
 
+- destroyed 生命周期选项被重命名为 unmounted
+- beforeDestroy 生命周期选项被重命名为 beforeUnmount
+- prop default 工厂函数不再有权访问 this 是上下文
+- 自定义指令 API 已更改为与组件生命周期一致
+- data 应始终声明为函数
+- 来自 mixin 的 data 选项现在可简单地合并
+- attribute 强制策略已更改
+- 一些过渡 class 被重命名
+- 组建 watch 选项和实例方法 $watch 不再支持以点分隔的字符串路径。请改用计算属性函数作为参数。
+- <template> 没有特殊指令的标记 (v-if/else-if/else、v-for 或 v-slot) 现在被视为普通元素，并将生成原生的 <template> 元素，而不是渲染其内部内容。
+在 Vue 2.x 中，应用根容器的 outerHTML 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。Vue 3.x 现在使用应用容器的 innerHTML，这意味着容器本身不再被视为模板的一部分。
 
+# 移除API
+
+- keyCode 不支持作为 v-on 的修饰符， 而是通过别名。 enter, delete,  主要是原生移除了 keycode 。
+- 移除： $on，$off 和 $once 实例方法。  建议引入外部库 event hub.
+- 移除 filters： 打破花括号内的表达式，有学习成本和实现成本。建议使用方法或者计算属性替换。
+- 移除 inline-template: 将内容作为模版，而不是内容分发。
+- 移除： $destroy 实例方法。用户不应再手动管理单个 Vue 组件的生命周期。
+
+## 最后
+
+其他： 如支持的库， cli, router, vuex, devtools, ide, 其他相关项目。
 
 
 
